@@ -1,7 +1,7 @@
 
 const io = require('socket.io')(process.env.PORT || 8000,  {
     cors: {
-        origin:["https://sinchat-asim.herokuapp.com"]
+        origin:["https://sinchat-asim.herokuapp.com","http://localhost:3000"]
     }
 });
 const users={};
@@ -15,4 +15,7 @@ io.on('connection', socket =>{
         // console.log(name);
         socket.broadcast.emit('receive',{message:message,name:name})
     });
+    socket.on('disconnect',()=>{
+        socket.broadcast.emit('left',users[socket.id])
+        })
 })
