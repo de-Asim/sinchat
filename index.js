@@ -1,7 +1,7 @@
 
 const io = require('socket.io')(process.env.PORT || 8000,  {
     cors: {
-        origin:["https://sinchat-asim.herokuapp.com/"]
+        origin:["https://sinchat-asim.herokuapp.com"]
     }
 });
 const users={};
